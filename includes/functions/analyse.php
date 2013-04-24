@@ -22,7 +22,6 @@ function analysebyfile($file, $type, $avg, $relation, $rgba_flag=false, $dropnoi
 	$size = getimagesize($img_file);
 	// 输出像素值
 	if($rgba_flag) {
-		$img_array = binarize_by_rgbavg($img_file, $avg, $relation, 0, 0);
 		echo "<h3>$img_file</h3>";
 		echo '<hr /><div class="pixel-data">';
 		echo '<p>像素值信息</p>';
@@ -32,6 +31,7 @@ function analysebyfile($file, $type, $avg, $relation, $rgba_flag=false, $dropnoi
 	}
 
 	// 二值化 并输出结果 必选
+	$img_array = binarize_by_rgbavg($img_file, $avg, $relation, 0, 0);
 	echo '<p>二值化</p>';
 	echo '<pre>';
 	print_binary_array($img_array,'0','=' );
