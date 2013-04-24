@@ -57,7 +57,7 @@ foreach($img_files as $img_file) {
 	<div id="main-content">
 	<p>here is main-content</p>
 	<?php
-	if(isset($_GET['recognize']) && !empty($_GET['captcha-source'])) {
+	if(isset($_GET['start_recognize']) && !empty($_GET['captcha-source'])) {
 		echo '<ol>';
 		foreach($result_arr as $k => $v) {
 			echo '<li><img src="'.$k.'">-------'.$v.'</li>';

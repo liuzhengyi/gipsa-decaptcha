@@ -67,6 +67,7 @@ function analysebyfile($file, $type, $avg, $relation, $rgba_flag=false, $dropnoi
 	// 打印出对齐后的单个字符
 	if($align_flag) {
 		echo '<p>对齐后的单个字符</p>';
+		$char_end_array = array_char_end($img_array);	// todo : add content to return value
 		foreach($char_end_array['numx'] as $start => $end) {
 			$x_length = $end - $start;
 			$y_height = count($img_array);

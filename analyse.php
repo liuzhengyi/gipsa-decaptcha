@@ -60,11 +60,11 @@ if(isset($_GET['start_analyse'])) {
 
 	<br />
 	请选择分析过程：<br />
-	<label for="process-0"><input type="checkbox" name="process-outputrgba" value="true" id="process-0" />输出rgb信息</label>&nbsp;&nbsp;&nbsp;
-	<label for="process-1"><input type="checkbox" name="process-binarize" value="true" checked="checked" disabled="disabled" id="process-1" />二值化(必选)</label>&nbsp;&nbsp;&nbsp;
-	<label for="process-2"><input type="checkbox" name="process-dropnoise" value="true" id="process-2" />降噪</label>&nbsp;&nbsp;&nbsp;
-	<label for="process-3"><input type="checkbox" name="process-align" value="true" id="process-3" />对齐</label>&nbsp;&nbsp;&nbsp;
-	<label for="process-4"><input type="checkbox" name="process-divide" value="true" id="process-4" />切割</label>
+	<label for="process-0"><input type="checkbox" name="process-outputrgba" value="true" id="process-0" <?php if(!empty($_GET['process-outputrgba'])){echo 'checked="checked"';} ?> />输出rgb信息</label>&nbsp;&nbsp;&nbsp;
+	<label for="process-1"><input type="checkbox" name="process-binarize" value="true" id="process-1" checked="checked" disabled="disabled" />二值化(必选)</label>&nbsp;&nbsp;&nbsp;
+	<label for="process-2"><input type="checkbox" name="process-dropnoise" value="true" id="process-2" <?php if(!empty($_GET['process-dropnoise'])) {echo 'checked="checked"';} ?> />降噪</label>&nbsp;&nbsp;&nbsp;
+	<label for="process-3"><input type="checkbox" name="process-divide" value="true" id="process-3" <?php if(!empty($_GET['process-divide'])){echo 'checked="checked"';} ?> />切割</label>
+	<label for="process-4"><input type="checkbox" name="process-align" value="true" id="process-4" <?php if(!empty($_GET['process-align'])){echo 'checked="checked"';} ?> />对齐</label>&nbsp;&nbsp;&nbsp;
 	<br /><br /><br /><input type="submit" name="start_analyse" value="开始分析" />
 	</form>
 	</div> <!-- end of DIV parameters-->
@@ -72,9 +72,13 @@ if(isset($_GET['start_analyse'])) {
 	<div id="main-content">
 	<?php
 	if(isset($_GET['start_analyse'])) {
+		if(!empty($_GET['process-outputrgba'])) {$rgba_flag = true;} else {$rgba_flag = false; }
+		if(!empty($_GET['process-dropnoise'])) {$dropnoise_flag = true;} else {$dropnoise_flag = false; }
+		if(!empty($_GET['process-divide'])) {$divide_flag = true;} else {$divide_flag = false; }
+		if(!empty($_GET['process-align'])) {$align_flag = true;} else {$align_flag = false; }
 		echo '<pre>';
 		//var_dump($_GET);
-		analysebyfile('./images/test/njaumy/0.jpg', 'jpg', 66, '<');
+		analysebyfile('./images/test/njaumy/0.jpg', 'jpg', 66, '<', $rgba_flag, $dropnoise_flag, $divide_flag, $align_flag);
 		echo '</pre>';
 	}
 	?>
