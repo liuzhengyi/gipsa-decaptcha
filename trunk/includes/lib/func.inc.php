@@ -15,7 +15,7 @@ define('Y_END', 22);
 // 根据rgb值二值化一张图片
 // function binarize_by_rgbavg($img_file, $avg, $relation, $x_end=0, $y_end=0, $x_start=0, $y_start=0 ) {
 
-// 给数组降噪 尚未实现
+// 给数组降噪
 // function drop_array_noise($res_array, $x_end, $y_end, $x_start=0, $y_start=0) {
 
 // 分割数组
@@ -167,7 +167,6 @@ function print_binary_array($array, $a='O', $b='_') {
  *	@$x_end, $y_end, $x_start, $y_start 要打印的范围
  * return value:
  *	N/A
- *
  */
 function print_rgb($img_file, $rgba='rgba', $x_end=0, $y_end=0, $x_start=0, $y_start=0) {
 	$rgbas = array('r'=>'red', 'g'=>'green', 'b'=>'blue', 'a'=>'avg');
@@ -200,6 +199,48 @@ function print_rgb($img_file, $rgba='rgba', $x_end=0, $y_end=0, $x_start=0, $y_s
 					printf("%4d", $rgbavg);
 				} else {
 					printf("%4d", $rgbarray[$v]);
+				}
+			}
+			echo "\n";
+		}
+		echo "\n";
+	}
+	imagedestroy($res);
+}
+function web_print_rgb($img_file, $rgba='rgba', $x_end=0, $y_end=0, $x_start=0, $y_start=0) {
+	$rgbas = array('r'=>'red', 'g'=>'green', 'b'=>'blue', 'a'=>'avg');
+	$size = array();
+	$res = open_img($img_file, &$size);
+	if( $y_end > $size[1] || 0 == $y_end ) { $y_end = $size[1]; }
+	if( $x_end > $size[0] || 0 == $x_end ) { $x_end = $size[0]; }
+
+	echo "FILE: $img_file \n==================\n";
+	foreach($rgbas as $k => $v) {
+		if(false === strpos($rgba, $k)) { continue;}
+		
+		// print header start 
+		echo "$v value \n------------------\n";
+		//print("    ");
+		echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';	// echo 4 space
+		for( $j = $x_start; $j < $x_end; $j++ ) {
+			printf("%'=4d", $j);
+		}
+		echo "\n";
+		//print("    ");
+		echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';	// echo 4 space
+		for( $j = $x_start; $j < $x_end; $j++ ) { print("----"); }
+		echo "\n";
+		// print header end 
+		for( $i = $y_start; $i < $y_end; $i++ ) {
+			printf("%-'=3d", $i); echo '|'; // print line number
+			for( $j = $x_start; $j < $x_end; $j++ ) {
+				$rgb = imagecolorat($res, $j, $i);
+				$rgbarray = imagecolorsforindex($res, $rgb);
+				if('a' == $k) {
+					$rgbavg = ($rgbarray['red']+$rgbarray['blue'] +$rgbarray['green'])/3; 
+					printf("%'=4d", $rgbavg);
+				} else {
+					printf("%'=4d", $rgbarray[$v]);
 				}
 			}
 			echo "\n";

@@ -1,0 +1,46 @@
+body {
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #abc;
+}
+/* ### id start ### */
+div#header {
+	text-align: center;
+}
+div#menu {
+	border: 2px solid #cde;
+}
+div#main-content {
+}
+/* ### id end ### */
+
+/* ### class start ### */
+.hori-list li{
+	list-style: none;
+	display: inline;
+	font-size: 2em;
+	padding: 10px;
+}
+div.single-char-arr {
+	border: 1px dotted #cde;
+	position: relative;
+	float: left;
+	margin: 10px;
+	font-size: .3em;
+}
+.clear {
+	clear: both;
+}
+.tiny-text {
+	font-size: .3em;
+}
+/*
+div.pixel-data div{
+	width:20px;
+	height:20px;
+	display: inline;
+	border: 1px dotted red;
+}
+*/
+/* ### class end ### */
