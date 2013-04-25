@@ -42,6 +42,8 @@ function recognizebyfile($file, $type, $avg, $relation, $map_file, $align='') {
 
 	// 二值化
 	$img_array = binarize_by_rgbavg($img_file, $avg, $relation, $size[0], $size[1]);
+	// 降噪
+	drop_array_noise($img_array);
 	// 做分割标记
 	$char_end_array = array_char_end($img_array);	// todo : add content to return value
 	// 按照分割标记 取出单个字符 识别之

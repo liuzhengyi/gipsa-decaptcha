@@ -35,6 +35,10 @@ div.single-char-arr {
 .tiny-text {
 	font-size: .3em;
 }
+.hint {
+	font-size: 1.3em;
+	color: #ff0;
+}
 /*
 div.pixel-data div{
 	width:20px;

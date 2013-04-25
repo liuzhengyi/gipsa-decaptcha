@@ -1,0 +1,14 @@
+//2013-04-25
+
+	给当前的web页面增加用户输入验证
+
+	尝试南京其他高校校园网的验证码
+		南师大教学信息系统 http://e.njnu.edu.cn/  http://e.njnu.edu.cn/LoginImage.aspx
+		南工业 http://202.119.248.199/CheckCode.aspx  
+		南航 教务管理系统 http://ded.nuaa.edu.cn/netean/user/GetCode.asp
+
+	完成study的web页面
+
+	命令行尝试识别phpwind验证码
+
+	学习阶段的学习结果似乎不太正常，参见maps/pps/的pps.map.php pps.map.php.lock
