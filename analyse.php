@@ -19,6 +19,8 @@ if(isset($_GET['start_analyse'])) {
 <body>
 	<div id="header">
 	<?php include('./includes/uiparts/header.inc.php'); ?>
+	<p class="hint">introduction: 下列参数目前只有<u><em>分析过程</em></u>可选，其他参数使用默认值即可</p>
+	<p class="hint">选择好分析过程后，点击‘开始分析’按钮。</p>
 	</div> <!-- end of DIV header -->
 
 	<p>必选的行为：二值化。<br />可选的行为：输出rgba值， 降噪，切割，对齐。 </p>
@@ -26,8 +28,8 @@ if(isset($_GET['start_analyse'])) {
 	<form action="#" method="get" >
 	 请选择要分析的验证码：
 	<select name="captcha-source">
-		<option value="njaumy">njaumy</option>
 		<option value="pps">pps</option>
+		<option value="njaumy">njaumy</option>
 		<option value="phpwind">phpwind</option>
 	</select>
 
@@ -42,7 +44,7 @@ if(isset($_GET['start_analyse'])) {
 	<select name="binarize-parameter-relation">
 		<option value="<">&lt;</option>
 		<option value=">">&gt;</option>
-		<option value="==">=</option>
+		<option value="==">==</option>
 		<option value="<=">&lt;=</option>
 		<option value=">=">&gt;=</option>
 	</select>
@@ -59,7 +61,7 @@ if(isset($_GET['start_analyse'])) {
 	</select>
 
 	<br />
-	请选择分析过程：<br />
+	请选择<u><em>分析过程：</em></u><br />
 	<label for="process-0"><input type="checkbox" name="process-outputrgba" value="true" id="process-0" <?php if(!empty($_GET['process-outputrgba'])){echo 'checked="checked"';} ?> />输出rgb信息</label>&nbsp;&nbsp;&nbsp;
 	<label for="process-1"><input type="checkbox" name="process-binarize" value="true" id="process-1" checked="checked" disabled="disabled" />二值化(必选)</label>&nbsp;&nbsp;&nbsp;
 	<label for="process-2"><input type="checkbox" name="process-dropnoise" value="true" id="process-2" <?php if(!empty($_GET['process-dropnoise'])) {echo 'checked="checked"';} ?> />降噪</label>&nbsp;&nbsp;&nbsp;
@@ -78,7 +80,7 @@ if(isset($_GET['start_analyse'])) {
 		if(!empty($_GET['process-align'])) {$align_flag = true;} else {$align_flag = false; }
 		echo '<pre>';
 		//var_dump($_GET);
-		analysebyfile('./images/test/njaumy/0.jpg', 'jpg', 66, '<', $rgba_flag, $dropnoise_flag, $divide_flag, $align_flag);
+		analysebyfile('./images/test/pps/0.png', 'jpg', 66, '==', $rgba_flag, $dropnoise_flag, $divide_flag, $align_flag);
 		echo '</pre>';
 	}
 	?>

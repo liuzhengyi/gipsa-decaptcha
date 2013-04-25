@@ -1,4 +1,4 @@
-	<h1>h1</h1>
+	<h1>验证码识别系统-刘正义</h1>
 	</div> <!--end of DIV header -->
 	<div id="menu" border="1">
 	<ul class="hori-list">
