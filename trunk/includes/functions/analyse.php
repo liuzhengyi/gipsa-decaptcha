@@ -5,7 +5,7 @@
  *
  */
 
-function analysebyfile($file, $type, $avg, $relation, $rgba_flag=false, $dropnoise_flag=false, $divide_flag=false, $align_flag=false) {
+function analysebyfile($file, $type, $binarize_parameters, $rgba_flag=false, $dropnoise_flag=false, $divide_flag=false, $align_flag=false) {
 	$img_file = $file;
 
 	// 对图像类型进行判断
@@ -31,7 +31,9 @@ function analysebyfile($file, $type, $avg, $relation, $rgba_flag=false, $dropnoi
 	}
 
 	// 二值化 并输出结果 必选
-	$img_array = binarize_by_rgbavg($img_file, $avg, $relation, 0, 0);
+	$value = $binarize_parameters['value'];
+	$relation = $binarize_parameters['relation'];
+	$img_array = binarize_by_rgbavg($img_file, $value, $relation );
 	echo '<p>二值化</p>';
 	echo '<pre>';
 	print_binary_array($img_array,'0','=' );

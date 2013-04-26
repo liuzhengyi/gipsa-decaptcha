@@ -84,6 +84,7 @@ function binarize_by_rgbavg($img_file, $avg, $relation, $x_end=0, $y_end=0, $x_s
 			$relation_array = array('<', '>', '>=', '<=', '==', '!=');
 			if(!in_array($relation, $relation_array)) {
 				throw new Exception('improper peremeter: $relation');
+				exit();  // todo change to err_msg
 			}
 			$relation_cmd = '
 			if($rgbavg '.$relation.' $avg) {
