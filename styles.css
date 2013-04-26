@@ -39,6 +39,10 @@ div.single-char-arr {
 	font-size: 1.3em;
 	color: #ff0;
 }
+.error {
+	font-size: 1.3em;
+	color: #f00;
+}
 /*
 div.pixel-data div{
 	width:20px;

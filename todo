@@ -6,9 +6,14 @@
 		南师大教学信息系统 http://e.njnu.edu.cn/  http://e.njnu.edu.cn/LoginImage.aspx
 		南工业 http://202.119.248.199/CheckCode.aspx  
 		南航 教务管理系统 http://ded.nuaa.edu.cn/netean/user/GetCode.asp
+		info.njau.edu.cn http://info.njau.edu.cn:8007/Public/GetValidateCode/
 
 	完成study的web页面
 
 	命令行尝试识别phpwind验证码
 
-	学习阶段的学习结果似乎不太正常，参见maps/pps/的pps.map.php pps.map.php.lock
+	*学习阶段的学习结果似乎不太正常，参见maps/pps/的pps.map.php pps.map.php.lock
+
+	lib/func.inc.php  中的 binarize_by_rgbavg()需要改进为binarize_by_rgba();
+
+	建立分析库
