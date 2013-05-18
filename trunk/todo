@@ -3,10 +3,11 @@
 	给当前的web页面增加用户输入验证
 
 	尝试南京其他高校校园网的验证码
-		南师大教学信息系统 http://e.njnu.edu.cn/  http://e.njnu.edu.cn/LoginImage.aspx
-		南工业 http://202.119.248.199/CheckCode.aspx  
-		南航 教务管理系统 http://ded.nuaa.edu.cn/netean/user/GetCode.asp
-		info.njau.edu.cn http://info.njau.edu.cn:8007/Public/GetValidateCode/
+		南师大教学信息系统; http://e.njnu.edu.cn/;  http://e.njnu.edu.cn/LoginImage.aspx
+		南工业; http://202.119.248.199/CheckCode.aspx  
+		南航 教务管理系统; http://ded.nuaa.edu.cn/netean/user/GetCode.asp
+		info.njau.edu.cn; http://info.njau.edu.cn:8007/Public/GetValidateCode/
+		pps; http://i.pps.tv/image.php
 
 	完成study的web页面
 
