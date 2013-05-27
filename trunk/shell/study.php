@@ -1,22 +1,47 @@
 <?php
-/* 学习或者识别pps验证码
+/* learn.php 学习验证码，人工参与
+ * liuzhengyi 2013-05-27
  *
- * 学习结果已序列化的数组存储在文件中
+ * 学习结果以序列化的PHP数组形式存储在../maps/下对应文件中
  */
-include('../../includes/lib/func.inc.php');
-$path = '../../images/test/pps/'; $type = 'png'; $avg = 66; $relation = '==';
+include('../includes/lib/func.inc.php');
+include('./shell_study_config.php');
+//$path = '../images/learn-sample/pps/'; $type = 'png'; $avg = 66; $relation = '==';
 //$path = './njaumy/'; $type = 'jpg'; $avg = 66; $relation = '<';
-$rgba = 'rgba';
-//analyse_files($path, $type, $rgba);		// 分析目录下的图片文件的像素
-pps_learn($path, $type, $avg, $relation);		// 学习目录下的图片文件
-//$file = '../images/pps/1.png';
-//$str = pps_tell($file, $type, $avg, $relation);	// 识别一张图片
-//echo $str;
+if($argc < 2 || !is_string($argv[1])) {
+	$err_msg = "Usage: $argv[0] CAPTCHA_NAME ";
+	exit($err_msg);
+}
+$CAPTCHA_NAME = strtoupper($argv[1]);
+//if(defined($CAPTCHA_NAME)) {
+if(!defined(strval($CAPTCHA_NAME))) {
+	$err_msg =  "no config about $argv[1] in shell_study_config found, please fill in the config file first. ";
+	exit($err_msg);
+}
+$base = $argv[1];
+$path = ${$base.'_learn_path'};
+$type = ${$base.'_type'};
+$avg = ${$base.'_avg'};
+$relation = ${$base.'_relation'};
+$flags = ${$base.'_flags'};
 
-function pps_learn($path, $type, $avg, $relation) {
+study($path, $type, $avg, $relation, $flags); // 学习目录下的图片文件
 
-	// variables and lock file
-	$map_file = dirname(__FILE__).'/'.substr_replace(basename(__FILE__), '.map', -4, 0);
+function study($path, $type, $avg, $relation, $flags) {
+
+	// variables and lock file // old style
+	// $map_file = dirname(__FILE__).'/'.substr_replace(basename(__FILE__), '.map', -4, 0);
+	// $map_file = dirname(__FILE__).'/'.substr_replace(basename(__FILE__), '.map', -4, 0);
+	// $lock_file = $map_file.'.lock';
+
+	// variables and lock file // new style
+	// get the lock file and directory
+	$tmp = strtok($path, "/");
+	while ($tmp !== false) {
+		$base_file = $tmp;
+	    $tmp = strtok("/");
+	}
+	$map_file = '../maps/'.$base_file.'.map.php';	// todo move '../maps/' to global config
 	$lock_file = $map_file.'.lock';
 
 	if(file_exists($lock_file)) {
@@ -75,6 +100,8 @@ function pps_learn($path, $type, $avg, $relation) {
 		//print_binary_array($img_array );
 		//$pure_array = slice_array($img_array, $x_lenth=9*4, $y_height=10, $x_start=14, $y_start=6);
 		//print_binary_array($pure_array );
+		// 降噪
+		drop_array_noise($img_array);
 		// 做分割标记
 		$char_end_array = array_char_end($img_array);	// todo : add content to return value
 		// 按照分割标记 打印出单个字符 识别或学习
@@ -84,6 +111,9 @@ function pps_learn($path, $type, $avg, $relation) {
 			$x_start = $start;
 			$part_array = slice_array($img_array, $x_length, $y_height, $x_start, $y_start=0);
 			print_binary_array($part_array, $a='O', $b='_');
+			if($flags['align']) {
+				$part_array = align_arr($part_array);
+			}
 			$array_str = array_to_str($part_array);
 			if(array_key_exists($array_str, $known_maps)) {
 				echo "{$known_maps[$array_str]} \n";

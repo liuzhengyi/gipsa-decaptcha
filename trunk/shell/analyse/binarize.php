@@ -15,7 +15,9 @@ $path = $argv[1];
 $type = $argv[2];
 $relation = $argv[3];
 $avg = $argv[4];
+//echo "binarize($path, $type, $avg, $relation)";		// 分析目录下的图片文件的像素
 binarize($path, $type, $avg, $relation);		// 分析目录下的图片文件的像素
+exit;
 //learn($path, $type, $avg, $relation);	// 识别目录下的图片文件
 
 function binarize($path, $type, $avg, $relation) {
@@ -38,7 +40,7 @@ function binarize($path, $type, $avg, $relation) {
 		//print_rgb($img_file, $rgba, $x_end = 120);
 
 		// 二值化
-		$img_array = binarize_by_rgbavg($img_file, $avg=100, $relation='<');
+		$img_array = binarize_by_rgbavg($img_file, $avg, $relation);
 
 		// 输出整个二值化数组
 		print_binary_array($img_array, $a='O', $b='_');
