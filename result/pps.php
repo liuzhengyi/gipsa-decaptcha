@@ -2,8 +2,8 @@
 /* 
  *
  */
-include('../func.inc.php');
-$path = './images/pps/'; $type = 'png'; $avg = 66; $relation = '==';
+include('../includes/lib/func.inc.php');
+$path = '../images/learn-sample/pps/'; $type = 'png'; $avg = 66; $relation = '==';
 //$path = './njaumy/'; $type = 'jpg'; $avg = 66; $relation = '<';
 $rgba = 'rgba';
 //analyse_files($path, $type, $rgba);		// 分析目录下的图片文件的像素
@@ -11,6 +11,7 @@ $rgba = 'rgba';
 //$file = '../images/pps/1.png';
 //$str = tell($file, $type, $avg, $relation);	// 识别目录下的图片文件
 //echo $str;
+learn($path, $type, $avg, $relation);
 
 function learn($path, $type, $avg, $relation) {
 
