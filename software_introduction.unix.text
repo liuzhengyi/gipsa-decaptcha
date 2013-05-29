@@ -1,5 +1,30 @@
 // software_introduction
-// liuzhengyi(19209107@cs91@njau)
+// liuzhengyi(19209107 cs91 njau)
 // 2013-05-29
 
 
+开发环境：
+Ubuntu12.04
+Bash4.2
+PHP 5.3.10
+
+使用方法：
+1. 抓取图片
+	在网上找到某网站验证码的产生地址，传递给抓取脚本get_pic.sh（同时传递其他相应参数）。
+	get_pic.sh即可将抓取的验证码图像放到三个目录下，并批量重命名。
+
+2. 分析图片
+	使用shell目录下的analyse.php程序来打印出图像的各个点的rgb值，用作分析。
+	analyse.php的具体使用参数参见程序自身的提示。
+	分析到合适的二值化参数和去噪参数之后，将这些参数写到配置文件shell/shell_study_config.php中。
+	具体格式参见其中的默认配置。
+
+3. 学习
+	使用shell目录下的study.php程序来学习。
+	使用命令php study.php来查看study.php的各个参数。
+	学习完毕后，学习结果会自动保存在maps目录下。
+
+4. 测试识别
+	使用shell目录下的recognize.php程序来进行识别测试。
+	该程序只需要一个参数，即2中设置参数设置的CAPTCHA name。
+	该程序会自动到相应的image/?/test/目录下读取图片进行识别。

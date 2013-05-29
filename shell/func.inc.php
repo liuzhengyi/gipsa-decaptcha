@@ -15,7 +15,7 @@ define('Y_END', 22);
 // 根据rgb值二值化一张图片
 // function binarize_by_rgbavg($img_file, $avg, $relation, $x_end=0, $y_end=0, $x_start=0, $y_start=0 ) {
 
-// 给数组降噪 尚未实现
+// 给数组降噪 
 // function drop_array_noise($res_array, $x_end, $y_end, $x_start=0, $y_start=0) {
 
 // 分割数组

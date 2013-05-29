@@ -13,7 +13,7 @@ $pps_test_path = '../images/test/pps';
 $pps_type = 'png';
 $pps_avg = '66';
 $pps_relation = '==';
-$njaumy_flags['align'] = false;
+$pps_flags['align'] = false;
 
 // njaumy
 define("NJAUMY", TRUE);
@@ -23,6 +23,15 @@ $njaumy_type = 'jpg';
 $njaumy_avg = '66';
 $njaumy_relation = '<';
 $njaumy_flags['align'] = true;
+
+// njauinfo
+define("NJAUINFO", TRUE);
+$njauinfo_learn_path = '../images/learn-sample/njauinfo';
+$njauinfo_test_path = '../images/test/njauinfo';
+$njauinfo_type = 'jpg';
+$njauinfo_avg = '66';
+$njauinfo_relation = '<';
+$njauinfo_flags['align'] = true;
 
 // njnu
 define("NJNU", TRUE);
@@ -41,5 +50,6 @@ $nju_type = 'jpg';
 $nju_avg = '130';
 $nju_relation = '<';
 $nju_flags['align'] = false;
+
 
 ?>

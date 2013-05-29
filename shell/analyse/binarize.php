@@ -44,6 +44,9 @@ function binarize($path, $type, $avg, $relation) {
 
 		// 输出整个二值化数组
 		print_binary_array($img_array, $a='O', $b='_');
+		// 输出降噪后的整个二值化数组
+		drop_array_noise($img_array);
+		print_binary_array($img_array, $a='O', $b='_');
 
 		// 切割图像
 		$char_end_array = array_char_end($img_array);	// todo : add content to return value
